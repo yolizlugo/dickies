@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Aspirante;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('Admin.admin');
+        $aspirantes = Aspirante::withCount(['schools'])
+                        ->with('families','schools')
+                        ->get();
+
+        return view('Admin.admin', compact('aspirantes'));
+        
     }
 }
+

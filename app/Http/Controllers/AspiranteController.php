@@ -39,6 +39,11 @@ class AspiranteController extends Controller
      */
     public function store(Request $request)
     {
+        $aspirante = new Aspirante();
+        $aspirante->fill($request->all());
+        $aspirante->save();
+        $mensaje = 'Aspirante Guardado';
+        return redirect('/')->with('mensaje', $mensaje);
         //
     }
 

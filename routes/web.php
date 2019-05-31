@@ -11,13 +11,20 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-Route::resource('/', 'AspiranteController');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
-
+// Route::resource('/', 'AspiranteController'); 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('home');
+
+
+Route::get('/admin', 'HomeController@index')->name('admin');
+
+Route::resource('/aspirante', 'AspiranteController');
+
